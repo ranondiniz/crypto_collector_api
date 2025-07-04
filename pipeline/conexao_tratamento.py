@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-API_KEY = os.getenv("API_KEY") # Mantenha por boa prática, mas não é estritamente necessário para o endpoint /assets
+API_KEY = os.getenv("API_KEY") 
 API_URL = "https://rest.coincap.io/v3/assets?limit=10"
 def extrair():
     """
@@ -12,11 +12,11 @@ def extrair():
     """
     url = "https://rest.coincap.io/v3/assets"
     
-    # Passando a chave da API como parâmetro, mesmo que opcional para /assets
+    # Passando a chave da API como parâmetro
     params = {"apiKey": API_KEY}
     
     response = requests.get(url, params=params)
-    response.raise_for_status()  # Isso vai levantar um erro para status codes 4xx/5xx
+    response.raise_for_status()  
     return response.json()
 
 def transformar(dados_json):
@@ -33,7 +33,7 @@ def transformar(dados_json):
     criptos_selecionadas = data[:10]
     
     for cripto in criptos_selecionadas:
-        # Usamos .get() para evitar KeyErrors se alguma chave estiver faltando
+        # Usa-se o .get() para evitar KeyErrors se alguma chave estiver faltando
         nome = cripto.get('name', 'N/A')
         simbolo = cripto.get('symbol', 'N/A')
         preco = float(cripto.get('priceUsd', 0.0))
@@ -43,7 +43,7 @@ def transformar(dados_json):
         dados_tratados = {
             "nome": nome,
             "simbolo": simbolo,
-            "preco_usd": round(preco, 2), # Arredonda para 2 casas decimais
+            "preco_usd": round(preco, 2), # Arredondar para 2 casas decimais
             "volume_24h_usd": round(volume_24h, 2),
             "capitalizacao_mercado_usd": round(capitalizacao, 2)
         }
@@ -59,10 +59,6 @@ if __name__ == "__main__":
         print("Informações das 10 principais criptomoedas (dados tratados):")
         for cripto in dados_tratados:
             print(f"  {cripto['nome']} ({cripto['simbolo']}) - Preço: ${cripto['preco_usd']:.2f}, Volume 24h: ${cripto['volume_24h_usd']:.2f}, Cap. Mercado: ${cripto['capitalizacao_mercado_usd']:.2f}")
-            
-        # Opcional: Para ver a estrutura completa dos dados tratados
-        # print("\nEstrutura JSON dos dados tratados:")
-        # print(json.dumps(dados_tratados, indent=2))
 
     except requests.exceptions.RequestException as e:
         print(f"Erro ao conectar ou obter dados da API: {e}")

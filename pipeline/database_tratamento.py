@@ -18,7 +18,7 @@ engine = create_engine(DATABASE_URL)
 Session = sessionmaker(bind=engine)
 Base = declarative_base()
 
-# Modelos
+# Models do Banco
 class Cryptocurrency(Base):
     __tablename__ = 'cryptocurrencies'
     id = Column(String(50), primary_key=True)
@@ -78,8 +78,8 @@ def tratar_dados(cripto):
 # Salvar dados
 def salvar_no_banco(crypto, price):
     with Session() as session:
-        session.merge(crypto)  # atualiza ou insere
-        session.add(price)     # insere histórico
+        session.merge(crypto)  # Atualiza ou insere
+        session.add(price)     # Insere histórico
         session.commit()
         print(f" Salvo: {crypto.name} - {price.price_usd} USD")
 
