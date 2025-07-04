@@ -100,6 +100,7 @@ python main_agent2.py
 Abra o arquivo `crypto_collector_api.pbix` na pasta `dashboard/` e atualize a fonte de dados com sua conexão PostgreSQL.
 
 Se quiser somente visualizar o dashboard, basta baixar o arquivo e abrir no Power BI Desktop.
+
 ---
 
 ##  Exemplos de perguntas para o Agno:
