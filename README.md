@@ -2,7 +2,7 @@
 
 &#x20;&#x20;
 
-Um projeto de engenharia de dados completo e funcional para **coleta automatizada de cotações de criptomoedas**, com persistência em banco **PostgreSQL**, visualização em **Power BI** e análise via **Agno AI Agent**.
+Um projeto de engenharia de dados completo e funcional para **coleta automatizada de cotações de criptomoedas**, com persistência em banco **PostgreSQL** via Cloud com **Render**, visualização em **Power BI** e análise via **Agno AI Agent**.
 
 ---
 
