@@ -6,7 +6,7 @@ import os
 
 load_dotenv()
 
-# Initialize PostgresTools with connection details
+# Inicializar o PostgresTools com detalhes de conexão
 postgres_tools = PostgresTools(
     host="dpg-d1jk2bq4d50c738465s0-a.oregon-postgres.render.com",
     port=5432,
@@ -16,7 +16,7 @@ postgres_tools = PostgresTools(
     table_schema="public",
 )
 
-# Create an agent with the PostgresTools
+# Cração de um agente com o PostgresTools
 agent = Agent(tools=[postgres_tools],
               model=Groq(id="llama3-70b-8192"),
               description="Você é um engenheiro de dados com acesso a um banco PostgreSQL com tabelas sobre criptomoedas."

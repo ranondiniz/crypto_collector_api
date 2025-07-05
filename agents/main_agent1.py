@@ -8,7 +8,7 @@ load_dotenv()
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
-# Initialize the agent with an LLM via Groq and DuckDuckGoTools
+# Inicialize o agente com um LLM via Groq e DuckDuckGoTools
 agent = Agent(
     model=Groq(id="llama-3.3-70b-versatile"),
     description="Você é o melhor especialista de engenharia de dados do mundo!",
@@ -17,5 +17,5 @@ agent = Agent(
     markdown=True                   # Format responses in markdown
 )
 
-# Prompt the agent to fetch a breaking news story from New York
+# Prompt para o agente buscar uma notícia sobre criptomoeda
 agent.print_response("Pesquise na web qual é a criptomoeda mais caras atualmete", stream=True)
